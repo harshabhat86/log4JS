@@ -22,6 +22,10 @@ var Log4js = function () {
 	this.domElement.style.textAlign = 'left';
 	this.domElement.style.fontSize = '10px';
 	this.domElement.style.padding = '2px 0px 3px 0px';
+    this.domElement.style.position = 'fixed';
+//    this.domElement.style.right = '20em';
+//    this.domElement.style.top = '20em';
+//    
 
 	this.log = function ( msg, expand ) {
 
