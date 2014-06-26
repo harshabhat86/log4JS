@@ -30,10 +30,10 @@ log4JS
 
 ##Inspiration
 Inspired by @mrdoob 's Logger.js
-Due credits to the author of [Logger.js](https://github.com/mrdoob/logger.js).
+Due credits to the author of [Logger.js](https://github.com/mrdoob/logger.js)
 
 
  
  ##License
- MIT License.
- Get more info about [MIT License](http://opensource.org/licenses/MIT)
+ Use it under [MIT License](http://opensource.org/licenses/MIT).
+ 
