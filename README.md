@@ -30,8 +30,9 @@ log4JS
 
 ##Inspiration
 Inspired by @mrdoob 's Logger.js
-Find it [here](https://github.com/mrdoob/logger.js)
-Due credits to the author of [Logger.js]((https://github.com/mrdoob/logger.js).
+Find it [here](https://github.com/mrdoob/logger.js).
+
+Due credits to the author of [Logger.js](https://github.com/mrdoob/logger.js).
 
 
  
