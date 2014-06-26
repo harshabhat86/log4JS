@@ -22,18 +22,20 @@ log4JS
 ```
 
 ##Plans :
- 1) Include different log formats and colors for them.
- 2) Make log availability more easy and magical (dont know what that means)
- 3) Try n make it async! (yes, in js)
- 4) Option to save the log to a file (Export it real quick).
-
+ 1. Include different log formats and colors for them.
+ 2. Make log availability more easy and magical (dont know what that means)
+ 3. Try n make it async! (yes, in js)
+ 4. Option to save the log to a file (Export it real quick).
+___
 
 ##Inspiration
+
 Inspired by @mrdoob 's Logger.js
 Due credits to the author of [Logger.js](https://github.com/mrdoob/logger.js)
-
+___
 
  
  ##License
+ 
  Use it under [MIT License](http://opensource.org/licenses/MIT).
  
