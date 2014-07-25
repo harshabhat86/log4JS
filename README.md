@@ -20,7 +20,7 @@ log4JS
 
 </script>
 ```
-#You can also use it to log the objects. This is how you do that.
+####You can also use it to log the objects. This is how you do that.
 ```html
 <script src="Log4js.js"></script>
 <script>
