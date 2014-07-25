@@ -20,10 +20,12 @@ var Log4js = function () {
 	this.domElement = document.createElement( 'div' );
     
     if(document.getElementById("Log4js")){
-        this.domElement.id = "Log4js"; // Yes, InitCap!
-    } else {
         console.warn("Cannot Use Log4js as an element with ID 'Log4js' already exists.");
         return;
+    } else {
+        
+        this.domElement.id = "Log4js"; // Yes, InitCap!
+        
     }
     
 	this.domElement.style.fontFamily = 'Helvetica, Arial, sans-serif';
@@ -31,8 +33,8 @@ var Log4js = function () {
 	this.domElement.style.fontSize = '10px';
 	this.domElement.style.padding = '2px 0px 3px 0px';
     this.domElement.style.position = 'fixed';
-//    this.domElement.style.right = '20em';
-//    this.domElement.style.top = '20em';
+   this.domElement.style.right = '10em';
+    this.domElement.style.top = '1em';
 //    
 
 	this.log = function ( msg, expand ) {
