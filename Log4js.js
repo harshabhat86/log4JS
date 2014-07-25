@@ -17,60 +17,58 @@
 
 var Log4js = function () {
 
-	this.domElement = document.createElement( 'div' );
-    
-    
-    if(document.getElementById("Log4js")){
+    this.domElement = document.createElement('div');
+    if (document.getElementById("Log4js")) {
         console.warn("Cannot Use Log4js as an element with ID 'Log4js' already exists.");
         return;
-    } else {
-        
-        this.domElement.id = "Log4js"; // Yes, InitCap!
-        
     }
-    
-	this.domElement.style.fontFamily = 'Helvetica, Arial, sans-serif';
-	this.domElement.style.textAlign = 'left';
-	this.domElement.style.fontSize = '10px';
-	this.domElement.style.padding = '2px 0px 3px 0px';
+
+    this.domElement.id = "Log4js"; // Yes, InitCap!
+
+
+
+    this.domElement.style.fontFamily = 'Helvetica, Arial, sans-serif';
+    this.domElement.style.textAlign = 'left';
+    this.domElement.style.fontSize = '10px';
+    this.domElement.style.padding = '2px 0px 3px 0px';
     this.domElement.style.position = 'fixed';
-   this.domElement.style.right = '10em';
+    this.domElement.style.right = '10em';
     this.domElement.style.top = '1em';
-    
-//  
-    
+
+
     //Now create a clear button, for the user to handle logs right there.
     this.clearBtn = document.createElement("button");
     this.clearBtn.id = "Log4jClearBtn";
     this.clearBtn.style.width = "50%";
     this.clearBtn.style.textAlign = "Center";
     this.clearBtn.innerHTML = "Clear Log";
-    
-    this.clearBtn.addEventListener("click", function(){log4js.clear()}, false);
+
+    this.clearBtn.addEventListener("click", function () {log4js.clear(); }, false);
     this.domElement.appendChild(this.clearBtn);
-    
-    
+
+
     //This elem is where all the logs will be dumped.
     this.logArea = document.createElement("div");
     this.logArea.id = "Log4jsLogArea";
     this.domElement.appendChild(this.logArea);
-    
-    
-    if (document.body)
-        document.body.appendChild( this.domElement );
-    else{
-        console.warn("The body of the document is not initialized yet. Perhaps you should try including Log4js after <body> tag...");
-        return;
+
+
+    if (document.body) {
+        document.body.appendChild(this.domElement);
     }
-    
-	this.log = function ( msg, expand ) {
+    else {
+            console.warn("The body of the document is not initialized yet. Perhaps you should try including Log4js after <body> tag...");
+            return;
+        }
 
-		this.logArea.appendChild( document.createTextNode( msg ) );
-		this.logArea.appendChild( document.createElement( 'br' ) );
+    this.log = function ( msg, expand ) {
+        var param;
+        this.logArea.appendChild( document.createTextNode( msg ) );
+        this.logArea.appendChild( document.createElement( 'br' ) );
 
-		if ( expand && msg instanceof Object ) {
+        if ( expand && msg instanceof Object ) {
 
-			for ( var param in msg ) {
+           for ( param in msg ) {
 
 				this.logArea.appendChild( document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
 				this.logArea.appendChild( document.createElement( 'br' ) );
@@ -85,6 +83,7 @@ var Log4js = function () {
     Error is marked in RED... Should it stop execution? No according to me, because I dont know if the user wants that
     */
     this.error = function ( msg, expand ) {
+        var param,
         err = document.createElement('span');
         err.style.color = 'RED';
         err.appendChild(document.createTextNode( msg ));
@@ -93,7 +92,7 @@ var Log4js = function () {
 
 		if ( expand && msg instanceof Object ) {
 
-			for ( var param in msg ) {
+			for ( param in msg ) {
                 err.appendChild(document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
                 err.appendChild( document.createElement( 'br' ) );
 				
@@ -108,6 +107,7 @@ var Log4js = function () {
     Warning is marked in Orange... 
     */
     this.warning = function ( msg, expand ) {
+        var param, 
         err = document.createElement('span');
         err.style.color = 'rgb(239, 147, 24)';
         err.appendChild(document.createTextNode( msg ));
@@ -116,7 +116,7 @@ var Log4js = function () {
 
 		if ( expand && msg instanceof Object ) {
 
-			for ( var param in msg ) {
+			for ( param in msg ) {
                 err.appendChild(document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
                 err.appendChild( document.createElement( 'br' ) );
 				
@@ -131,6 +131,7 @@ var Log4js = function () {
     message is marked in green... 
     */
     this.message = function ( msg, expand ) {
+        var param,
         err = document.createElement('span');
         err.style.color = 'green';
         err.appendChild(document.createTextNode( msg ));
@@ -139,7 +140,7 @@ var Log4js = function () {
 
 		if ( expand && msg instanceof Object ) {
 
-			for ( var param in msg ) {
+			for ( param in msg ) {
                 err.appendChild(document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
                 err.appendChild( document.createElement( 'br' ) );
 				
