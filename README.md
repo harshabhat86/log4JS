@@ -20,6 +20,21 @@ log4JS
 
 </script>
 ```
+#You can also use it to log the objects. This is how you do that.
+```html
+<script src="Log4js.js"></script>
+<script>
+
+	var log4js = new Log4js();
+	document.body.appendChild( log4js.domElement );
+
+	log4js.log( 'An object's structure can be logged like this ' );
+    log4js.log( document.getElementById('ObjectId'),1 );
+    log4js.log(arrayName);
+
+</script>
+```
+
 
 ##Plans :
  1. Include different log formats and colors for them.
