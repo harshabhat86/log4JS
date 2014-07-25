@@ -19,6 +19,7 @@ var Log4js = function () {
 
 	this.domElement = document.createElement( 'div' );
     
+    
     if(document.getElementById("Log4js")){
         console.warn("Cannot Use Log4js as an element with ID 'Log4js' already exists.");
         return;
@@ -35,19 +36,44 @@ var Log4js = function () {
     this.domElement.style.position = 'fixed';
    this.domElement.style.right = '10em';
     this.domElement.style.top = '1em';
-//    
-
+    
+//  
+    
+    //Now create a clear button, for the user to handle logs right there.
+    this.clearBtn = document.createElement("button");
+    this.clearBtn.id = "Log4jClearBtn";
+    this.clearBtn.style.width = "50%";
+    this.clearBtn.style.textAlign = "Center";
+    this.clearBtn.innerHTML = "Clear Log";
+    
+    this.clearBtn.addEventListener("click", function(){log4js.clear()}, false);
+    this.domElement.appendChild(this.clearBtn);
+    
+    
+    //This elem is where all the logs will be dumped.
+    this.logArea = document.createElement("div");
+    this.logArea.id = "Log4jsLogArea";
+    this.domElement.appendChild(this.logArea);
+    
+    
+    if (document.body)
+        document.body.appendChild( this.domElement );
+    else{
+        console.warn("The body of the document is not initialized yet. Perhaps you should try including Log4js after <body> tag...");
+        return;
+    }
+    
 	this.log = function ( msg, expand ) {
 
-		this.domElement.appendChild( document.createTextNode( msg ) );
-		this.domElement.appendChild( document.createElement( 'br' ) );
+		this.logArea.appendChild( document.createTextNode( msg ) );
+		this.logArea.appendChild( document.createElement( 'br' ) );
 
 		if ( expand && msg instanceof Object ) {
 
 			for ( var param in msg ) {
 
-				this.domElement.appendChild( document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
-				this.domElement.appendChild( document.createElement( 'br' ) );
+				this.logArea.appendChild( document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
+				this.logArea.appendChild( document.createElement( 'br' ) );
 
 			}
 
@@ -62,8 +88,8 @@ var Log4js = function () {
         err = document.createElement('span');
         err.style.color = 'RED';
         err.appendChild(document.createTextNode( msg ));
-		this.domElement.appendChild( err );
-		this.domElement.appendChild( document.createElement( 'br' ) );
+		this.logArea.appendChild( err );
+		this.logArea.appendChild( document.createElement( 'br' ) );
 
 		if ( expand && msg instanceof Object ) {
 
@@ -72,7 +98,7 @@ var Log4js = function () {
                 err.appendChild( document.createElement( 'br' ) );
 				
 			}
-            this.domElement.appendChild( err);
+            this.logArea.appendChild( err);
 
 		}
 
@@ -85,8 +111,8 @@ var Log4js = function () {
         err = document.createElement('span');
         err.style.color = 'rgb(239, 147, 24)';
         err.appendChild(document.createTextNode( msg ));
-		this.domElement.appendChild( err );
-		this.domElement.appendChild( document.createElement( 'br' ) );
+		this.logArea.appendChild( err );
+		this.logArea.appendChild( document.createElement( 'br' ) );
 
 		if ( expand && msg instanceof Object ) {
 
@@ -95,7 +121,7 @@ var Log4js = function () {
                 err.appendChild( document.createElement( 'br' ) );
 				
 			}
-            this.domElement.appendChild( err);
+            this.logArea.appendChild( err);
 
 		}
 
@@ -108,8 +134,8 @@ var Log4js = function () {
         err = document.createElement('span');
         err.style.color = 'green';
         err.appendChild(document.createTextNode( msg ));
-		this.domElement.appendChild( err );
-		this.domElement.appendChild( document.createElement( 'br' ) );
+		this.logArea.appendChild( err );
+		this.logArea.appendChild( document.createElement( 'br' ) );
 
 		if ( expand && msg instanceof Object ) {
 
@@ -118,7 +144,7 @@ var Log4js = function () {
                 err.appendChild( document.createElement( 'br' ) );
 				
 			}
-            this.domElement.appendChild( err);
+            this.logArea.appendChild( err);
 
 		}
 
@@ -127,11 +153,11 @@ var Log4js = function () {
 
 	this.clear = function () {
 
-		while ( this.domElement.childNodes.length > 0 ) {
-
-			this.domElement.removeChild( this.domElement.childNodes[ 0 ] );
-
-		}
+         while (this.logArea.childNodes.length >0)
+        {
+            this.logArea.removeChild( this.logArea.childNodes[0] );
+        }
+		
 
 	};
 
