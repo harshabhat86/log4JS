@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="">
+    <script>
+        
+    var log4js = new Log4js();
+    document.body.appendChild( log4js.domElement );
+
+    log4js.log( 'A simple log' );
+    log4js.error( 'Error is in RED' );
+    log4js.warning( 'Warnings are in Orange' );
+    log4js.message( 'Messages are in Green' );
+        
+    log = Function(){
+        val = document.getElementById("testField").value;
+        log4js.log( 'Logging '+val );
+        log4js.error( 'Val is error '+val );
+        log4js.warning( 'Val is Warning ' +val);
+        log4js.message( 'Val is message ' +val);
+    
+    }
+    
+    </script>
+</head>
+
+<body>
+    <script src="Log4js.js"></script>
+    
+    <input id="testField" onKeyUp="log"/>
+    
+    
+    
+</body>
+</html>

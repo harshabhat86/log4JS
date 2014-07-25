@@ -18,6 +18,14 @@
 var Log4js = function () {
 
 	this.domElement = document.createElement( 'div' );
+    
+    if(document.getElementById("Log4js")){
+        this.domElement.id = "Log4js"; // Yes, InitCap!
+    } else {
+        console.warn("Cannot Use Log4js as an element with ID 'Log4js' already exists.");
+        return;
+    }
+    
 	this.domElement.style.fontFamily = 'Helvetica, Arial, sans-serif';
 	this.domElement.style.textAlign = 'left';
 	this.domElement.style.fontSize = '10px';
