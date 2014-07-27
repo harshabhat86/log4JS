@@ -62,20 +62,9 @@ var Log4js = function () {
         }
 
     this.log = function ( msg, expand ) {
-        var param;
-        this.logArea.appendChild( document.createTextNode( msg ) );
-        this.logArea.appendChild( document.createElement( 'br' ) );
-
-        if ( expand && msg instanceof Object ) {
-
-           for ( param in msg ) {
-
-				this.logArea.appendChild( document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
-				this.logArea.appendChild( document.createElement( 'br' ) );
-
-			}
-
-		}
+        
+        
+       this.writeObjectLog(msg,expand);
 
 	};
     
@@ -83,23 +72,10 @@ var Log4js = function () {
     Error is marked in RED... Should it stop execution? No according to me, because I dont know if the user wants that
     */
     this.error = function ( msg, expand ) {
-        var param,
-        err = document.createElement('span');
+        var err = document.createElement('span');
         err.style.color = 'RED';
-        err.appendChild(document.createTextNode( msg ));
-		this.logArea.appendChild( err );
-		this.logArea.appendChild( document.createElement( 'br' ) );
-
-		if ( expand && msg instanceof Object ) {
-
-			for ( param in msg ) {
-                err.appendChild(document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
-                err.appendChild( document.createElement( 'br' ) );
-				
-			}
-            this.logArea.appendChild( err);
-
-		}
+        
+        this.writeObjectLog(msg,expand,err);
 
 	};
     
@@ -107,23 +83,9 @@ var Log4js = function () {
     Warning is marked in Orange... 
     */
     this.warning = function ( msg, expand ) {
-        var param, 
-        err = document.createElement('span');
-        err.style.color = 'rgb(239, 147, 24)';
-        err.appendChild(document.createTextNode( msg ));
-		this.logArea.appendChild( err );
-		this.logArea.appendChild( document.createElement( 'br' ) );
-
-		if ( expand && msg instanceof Object ) {
-
-			for ( param in msg ) {
-                err.appendChild(document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
-                err.appendChild( document.createElement( 'br' ) );
-				
-			}
-            this.logArea.appendChild( err);
-
-		}
+        var warn = document.createElement('span');
+        warn.style.color = 'rgb(239, 147, 24)';
+        this.writeObjectLog(msg,expand,warn);
 
 	};
     
@@ -131,23 +93,9 @@ var Log4js = function () {
     message is marked in green... 
     */
     this.message = function ( msg, expand ) {
-        var param,
-        err = document.createElement('span');
-        err.style.color = 'green';
-        err.appendChild(document.createTextNode( msg ));
-		this.logArea.appendChild( err );
-		this.logArea.appendChild( document.createElement( 'br' ) );
-
-		if ( expand && msg instanceof Object ) {
-
-			for ( param in msg ) {
-                err.appendChild(document.createTextNode( '- ' + param + ': ' + msg[ param ] ) );
-                err.appendChild( document.createElement( 'br' ) );
-				
-			}
-            this.logArea.appendChild( err);
-
-		}
+        var message = document.createElement('span');
+        message.style.color = 'green';
+		this.writeObjectLog(msg,expand,message);
 
 	};
     
@@ -158,6 +106,36 @@ var Log4js = function () {
         {
             this.logArea.removeChild( this.logArea.childNodes[0] );
         }
+		
+
+	};
+    
+    this.writeObjectLog = function (msg,expand,node) {
+          var param;
+          if (node===null||node ===undefined) // This is a simple log message, not error/warning or message.
+          {
+              this.logArea.appendChild( document.createTextNode( msg ) );
+              this.logArea.appendChild( document.createElement( 'br' ) );
+          }
+        else
+          {
+              node.appendChild(document.createTextNode(new Date()+":"+msg))
+              this.logArea.appendChild( node );
+		      this.logArea.appendChild( document.createElement( 'br' ) );
+          }
+        
+          
+        
+          if ( expand && msg instanceof Object ) {
+
+           for ( param in msg ) {
+
+				this.logArea.appendChild( document.createTextNode( new Date()+': - ' + param + ': ' + msg[ param ] ) );
+				this.logArea.appendChild( document.createElement( 'br' ) );
+
+			}
+
+		}
 		
 
 	};
