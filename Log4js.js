@@ -119,7 +119,7 @@ var Log4js = function () {
           }
         else
           {
-              node.appendChild(document.createTextNode(new Date()+":"+msg))
+              node.appendChild(document.createTextNode(new Date()+":"+msg));
               this.logArea.appendChild( node );
 		      this.logArea.appendChild( document.createElement( 'br' ) );
           }
