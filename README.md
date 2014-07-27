@@ -36,7 +36,7 @@ log4JS
 ```
 
 
-##Plans :
+##Plans (TO DO):
  1. Include different log formats and colors for them. --- check
  2. Make log availability more easy and magical (dont know what that means)
  3. Try n make it async! (yes, in js)
