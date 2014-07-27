@@ -3,7 +3,6 @@ log4JS
 
 ####A simple Javascript logging console for one for all... include lib, start logging####
 
-
 ### Usage ###
 
 ```html
@@ -42,6 +41,12 @@ log4JS
  3. Try n make it async! (yes, in js)
  4. Option to save the log to a file (Export it real quick).
  5. Give an option for the user to check the values real quick. Like in browser consoles.
+ 
+___
+##Disclaimer
+Please note that this is to be used only during Development.
+A Javascript loggger  during production doesn't make sense, unless you are using JS on server side.
+This is more like a quick debugging tool you see on your webpage. Saves your time.
  
 ___
 
