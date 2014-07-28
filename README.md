@@ -2,7 +2,7 @@ log4JS
 ======
 
 ####A simple Javascript logging console for one for all... include lib, start logging####
-##### Check the Demo here [Log4JS](harshabhat86.github.io/Log4JS/testing.html)
+##### Check the Demo [here](harshabhat86.github.io/Log4JS/testing.html)
 ### Usage ###
 
 ```html
