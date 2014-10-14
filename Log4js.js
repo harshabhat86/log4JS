@@ -8,7 +8,7 @@
  Just want to make it a little more useful.
  
  Plans :
- 1) Include different log formats and colors for them.
+ 1) Include different log formats and colors for them. --- check
  2) Make log availability more easy and magical (dont know what that means)
  3) Try n make it async! (yes, in js)
  4) Option to save the log to a file (Export it real quick).
